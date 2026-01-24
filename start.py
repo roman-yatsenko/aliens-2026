@@ -3,6 +3,7 @@ import sys
 import pygame as pg
 
 from settings import Settings
+from ship import Ship
 
 
 class AlienInvasion:
@@ -19,6 +20,9 @@ class AlienInvasion:
         )
         pg.display.set_caption("Alien Invasion 2026")
 
+        # Створення ігрових об'єктів
+        self.ship = Ship(self)
+
     def run_game(self):
         """Запуск основного циклу гри"""
         while True:
@@ -29,6 +33,7 @@ class AlienInvasion:
 
             # Оновлення екрану
             self.screen.fill(self.settings.bg_color)
+            self.ship.blitme()
 
             # Відображення останнього прорисованого екрану
             pg.display.flip()
