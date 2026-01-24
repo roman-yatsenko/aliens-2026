@@ -26,10 +26,7 @@ class AlienInvasion:
     def run_game(self):
         """Запуск основного циклу гри"""
         while True:
-            # Відслідковування подій клавіатури та миші
-            for event in pg.event.get():
-                if event.type == pg.QUIT:
-                    sys.exit()
+            self._check_events()
 
             # Оновлення екрану
             self.screen.fill(self.settings.bg_color)
@@ -38,6 +35,12 @@ class AlienInvasion:
             # Відображення останнього прорисованого екрану
             pg.display.flip()
             self.clock.tick(60)
+
+    def _check_events(self):
+        """Обробляє натиснення клавіш та події миші"""
+        for event in pg.event.get():
+            if event.type == pg.QUIT:
+                sys.exit()
 
 
 if __name__ == "__main__":
