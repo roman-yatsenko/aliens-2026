@@ -9,9 +9,13 @@ class AlienInvasion:
     def __init__(self):
         """Ініціалізує гру та створює ігрові ресурси"""
         pg.init()
+        self.clock = pg.time.Clock()
 
         self.screen = pg.display.set_mode((1200, 800))
         pg.display.set_caption("Alien Invasion 2026")
+
+        # Призначення коліру фону
+        self.bg_color = "lightgray"  # (230, 230, 230)
 
     def run_game(self):
         """Запуск основного циклу гри"""
@@ -21,8 +25,12 @@ class AlienInvasion:
                 if event.type == pg.QUIT:
                     sys.exit()
 
-        # Відображення останнього прорисованого екрану
-        pg.display.flip()
+            # Оновлення екрану
+            self.screen.fill(self.bg_color)
+
+            # Відображення останнього прорисованого екрану
+            pg.display.flip()
+            self.clock.tick(60)
 
 
 if __name__ == "__main__":
