@@ -27,13 +27,7 @@ class AlienInvasion:
         """Запуск основного циклу гри"""
         while True:
             self._check_events()
-
-            # Оновлення екрану
-            self.screen.fill(self.settings.bg_color)
-            self.ship.blitme()
-
-            # Відображення останнього прорисованого екрану
-            pg.display.flip()
+            self._update_screen()
             self.clock.tick(60)
 
     def _check_events(self):
@@ -41,6 +35,15 @@ class AlienInvasion:
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 sys.exit()
+
+    def _update_screen(self):
+        """Оновлює зображення на екрані та відображає новий екран"""
+        # Оновлення екрану
+        self.screen.fill(self.settings.bg_color)
+        self.ship.blitme()
+
+        # Відображення останнього прорисованого екрану
+        pg.display.flip()
 
 
 if __name__ == "__main__":
