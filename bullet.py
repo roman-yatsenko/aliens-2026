@@ -29,3 +29,5 @@ class Bullet(Sprite):
         """Переміщує снаряд угору по екрану"""
         self.y -= self.settings.bullet_speed
         self.rect.y = self.y
+        if self.rect.bottom <= 0:
+            self.kill()
