@@ -5,7 +5,7 @@ from pygame.sprite import Sprite
 class Bullet(Sprite):
     """Клас для управління снарядами, якими стріляє корабель"""
 
-    def __init(self, ai_game):
+    def __init__(self, ai_game):
         """Створює об'єкт снаряду в поточні позиції корабля"""
         super().__init__()
         self.screen = ai_game.screen
