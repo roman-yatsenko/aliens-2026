@@ -20,3 +20,6 @@ class Settings:
 
         # Налаштування прибульців
         self.alien_speed = 1
+        self.fleet_drop_speed = 10
+        # fleet_direction = 1 якщо флот рухається, -1 якщо ліворуч
+        self.fleet_direction = 1
