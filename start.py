@@ -1,9 +1,11 @@
 import sys
+from time import sleep
 
 import pygame as pg
 
 from alien import Alien
 from bullet import Bullet
+from game_stats import GameStats
 from settings import Settings
 from ship import Ship
 
@@ -21,6 +23,9 @@ class AlienInvasion:
         self.settings.screen_width = self.screen.get_rect().width
         self.settings.screen_height = self.screen.get_rect().height
         pg.display.set_caption("Alien Invasion 2026")
+
+        # Створення екземпляра для зберігання ігрової статистики
+        self.stats = GameStats(self)
 
         # Створення ігрових об'єктів
         self.ship = Ship(self)
@@ -113,6 +118,19 @@ class AlienInvasion:
             new_bullet = Bullet(self)
             self.bullets.add(new_bullet)
 
+    def _ship_hit(self):
+        """Обробляє зіткнення корабля з прибульцем"""
+        self.stats.ships_left -= 1
+
+        self.aliens.empty()
+        self.bullets.empty()
+
+        self._create_fleet()
+        self.ship.center_ship()
+
+        # Пауза
+        sleep(0.5)
+
     def _update_aliens(self):
         """Оновлює позиції всіх прибульців флоту"""
         self._check_fleet_edges()
@@ -120,7 +138,7 @@ class AlienInvasion:
 
         # Перевірка колізій "прибулець-корабель"
         if pg.sprite.spritecollideany(self.ship, self.aliens):
-            print("Ship hit!!!")
+            self._ship_hit()
 
     def _update_bullets(self):
         """Оновлення снарядів"""
