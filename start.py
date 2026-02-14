@@ -109,7 +109,14 @@ class AlienInvasion:
     def _check_play_button(self, mouse_pos):
         """Запускає нову гру коли натиснуто Play"""
         if self.play_button.rect.collidepoint(mouse_pos):
+            # Скидання ігрової статистики
+            self.stats.reset_stats()
             self.stats.game_active = True
+
+            self.aliens.empty()
+            self.bullets.empty()
+            self._create_fleet()
+            self.ship.center_ship()
 
     def _create_alien(self, x_position, y_position):
         """Створює одного прибульця і розміщує його в ряду"""
