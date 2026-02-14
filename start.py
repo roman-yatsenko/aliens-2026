@@ -118,6 +118,10 @@ class AlienInvasion:
         self._check_fleet_edges()
         self.aliens.update()
 
+        # Перевірка колізій "прибулець-корабель"
+        if pg.sprite.spritecollideany(self.ship, self.aliens):
+            print("Ship hit!!!")
+
     def _update_bullets(self):
         """Оновлення снарядів"""
         self.bullets.update()
