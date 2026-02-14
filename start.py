@@ -35,6 +35,8 @@ class AlienInvasion:
             self._check_events()
             self.ship.update()
             self.bullets.update()
+            # Перевірка потраплянь у прибульців
+            collisions = pg.sprite.groupcollide(self.bullets, self.aliens, True, True)
             self._update_aliens()
             self._update_screen()
             self.clock.tick(60)
