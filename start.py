@@ -187,6 +187,7 @@ class AlienInvasion:
             # Знищення існуючих снарядів та створення нового флоту
             self.bullets.empty()
             self._create_fleet()
+            self.settings.increase_speed()
 
     def _update_screen(self):
         """Оновлює зображення на екрані та відображає новий екран"""
