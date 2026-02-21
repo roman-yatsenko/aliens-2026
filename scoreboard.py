@@ -16,13 +16,9 @@ class Scoreboard:
         self.font = pg.font.SysFont(None, 48)
 
         # Підготовка початкового зображення
-        self._prepare_score()
+        self.prepare_score()
 
-    def show_score(self):
-        """Виводе рахунок на екран"""
-        self.screen.blit(self.score_image, self.score_rect)
-
-    def _prepare_score(self):
+    def prepare_score(self):
         """Перетворює поточний рахунок на графічне зображення"""
         score_str = str(self.stats.score)
         self.score_image = self.font.render(
@@ -33,3 +29,7 @@ class Scoreboard:
         self.score_rect = self.score_image.get_rect()
         self.score_rect.right = self.screen_rect.right - 20
         self.score_rect.top = 20
+
+    def show_score(self):
+        """Виводе рахунок на екран"""
+        self.screen.blit(self.score_image, self.score_rect)
