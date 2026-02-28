@@ -13,7 +13,9 @@ class Ship(Sprite):
         self.screen_rect = ai_game.screen.get_rect()
 
         # Завантаження зображення корабля і отримання для нього поверхні
-        self.image = pg.image.load("images/ship.bmp")
+        self.image = pg.image.load(
+            "images/" + "ship-dark.bmp" if self.settings.dark_mode else "ship.bmp"
+        )
         self.rect = self.image.get_rect()
 
         # Кожен новий корабель з'являється в нижній частині екрану
